@@ -1,3 +1,4 @@
+import 'package:fftea/fftea.dart';
 import 'package:flutter/material.dart';
 
 class GuitarTuningPage extends StatefulWidget {
@@ -15,9 +16,15 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
   }
 
   onSelected(int stringNumber) {
-    setState(() {
-      selected = stringNumber;
-    });
+    if (selected == stringNumber) {
+      setState(() {
+        selected = 0;
+      });
+    } else {
+      setState(() {
+        selected = stringNumber;
+      });
+    }
     print("Selected String: " + selected.toString());
   }
 
