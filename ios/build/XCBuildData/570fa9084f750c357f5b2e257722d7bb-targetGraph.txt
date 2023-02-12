@@ -1,0 +1,22 @@
+Target dependency graph (8 targets)
+Flutter in Pods, no dependencies
+assets_audio_player in Pods, depends on:
+Flutter in Pods (explicit)
+assets_audio_player_web in Pods, depends on:
+Flutter in Pods (explicit)
+flutter_sound_core in Pods, no dependencies
+flutter_sound in Pods, depends on:
+Flutter in Pods (explicit)
+flutter_sound_core in Pods (explicit)
+path_provider_foundation in Pods, depends on:
+Flutter in Pods (explicit)
+permission_handler_apple in Pods, depends on:
+Flutter in Pods (explicit)
+Pods-Runner in Pods, depends on:
+Flutter in Pods (explicit)
+assets_audio_player in Pods (explicit)
+assets_audio_player_web in Pods (explicit)
+flutter_sound in Pods (explicit)
+flutter_sound_core in Pods (explicit)
+path_provider_foundation in Pods (explicit)
+permission_handler_apple in Pods (explicit)
