@@ -50,7 +50,6 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
         title: Text(
           'GuitarTunes',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
             fontWeight: FontWeight.bold,
             fontSize: 24,
           ),
