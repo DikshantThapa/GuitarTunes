@@ -15,10 +15,15 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
   }
 
   onSelected(int stringNumber) {
-    setState(() {
-      selected = stringNumber;
-    });
-    print("Selected String: " + selected.toString());
+    if (selected == stringNumber) {
+      setState(() {
+        selected = 0;
+      });
+    } else {
+      setState(() {
+        selected = stringNumber;
+      });
+    }
   }
 
   @override
@@ -30,7 +35,6 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
         title: Text(
           'GuitarTunes',
           style: TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0),
             fontWeight: FontWeight.bold,
             fontSize: 24,
           ),

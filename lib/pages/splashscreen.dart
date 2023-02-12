@@ -4,7 +4,6 @@
 // import 'package:guitar_tunes/main.dart';
 // import 'package:guitar_tunes/pages/GuitarTuningPage.dart';
 
-
 // class SplashScreen extends StatefulWidget {
 //   const SplashScreen({super.key});
 
@@ -16,18 +15,17 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     int value =0;
-//     Timer(Duration(seconds: 5), () { 
+//     Timer(Duration(seconds: 5), () {
 //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
 //         return HomePage();
 //       },));
 //     });
 //     return MaterialApp(
-      
+
 //       debugShowCheckedModeBanner: false,
 //       title: "Guitar Tunes",
 //       home: Scaffold(
 
-            
 //         backgroundColor: Colors.black,
 //         body: InkWell(
 //           onTap: (){
@@ -40,7 +38,7 @@
 //                 style: TextStyle(
 //                   color: Colors.white,
 //                   fontSize: 30,
-//                   fontWeight:FontWeight.bold, 
+//                   fontWeight:FontWeight.bold,
 //                 ),
 //             ),
 //           ),
@@ -49,7 +47,6 @@
 //     );
 //   }
 // }
-
 
 import 'dart:async';
 
@@ -67,63 +64,54 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds:5), () { 
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomePage();
-      },));
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (context) {
+          return HomePage();
+        },
+      ));
     });
     return Scaffold(
       body: Container(
-        
-        child: Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              children: [
-                Container(
-                  height: 400,
-                  width: 400, 
-                  decoration: BoxDecoration(
-                   // border: Border.all(color: Colors.black),
-                    image: DecorationImage(image: AssetImage("assets/images/Guitartunes.png"),fit: BoxFit.cover)
-                  ),
-                ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
                   Container(
-                    child:Text(
-                          "Guitar Tunes",
-                          style: TextStyle(
+                    height: 400,
+                    width: 400,
+                    decoration: BoxDecoration(
+                        // border: Border.all(color: Colors.black),
+                        image: DecorationImage(
+                            image: AssetImage("assets/images/Guitartunes.png"),
+                            fit: BoxFit.cover)),
+                  ),
+                  Container(
+                    child: Text(
+                      "Guitar Tunes",
+                      style: TextStyle(
                           fontSize: 55,
                           color: Colors.amber.shade700,
-                          fontFamily: "kanit",
-                          fontWeight: FontWeight.w800
-                ),
-              ),
+                          fontFamily: "Kanit",
+                          fontWeight: FontWeight.w800),
+                    ),
                   ),
-                  
                   CircularProgressIndicator.adaptive(
                     backgroundColor: Colors.white,
                     strokeWidth: 5,
                   )
-
-                
-              ],
-            )
-           
-          ],
-          
-        ),
+                ],
+              )
+            ],
+          ),
         ),
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage("assets/images/background.png"),fit: BoxFit.cover)
-        ),
+            image: DecorationImage(
+                image: AssetImage("assets/images/background.png"),
+                fit: BoxFit.cover)),
       ),
-      
     );
   }
 }
-
-
-
-
-
-
