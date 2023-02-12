@@ -1,0 +1,66 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e989da425bb6d6d5d8dbb95e4afffb82217"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98312b4bc59bbbe2c06c205bf4da6737f5"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98ad88bb45f8e1282020fe5ab7081fdaea"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e982860fd1c222351f44e898f22e4a98c6c"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e988e2765468126b8189d0a656452a5242d"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9817d41af66eee3a4c1e145e17163b22b8"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e9830037b09fee48cfce1f8562d753688c8"
+    },
+    {
+      "guid" : "bfdfe7dc352907fc980b868725387e98ef10255b706f98e1e88fae00855b0968"
+    }
+  ],
+  "containerPath" : "/Users/diwas/Desktop/college/Gt_v3/GuitarTunes/ios/Pods/Pods.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/diwas/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/diwas/Library/Developer/Xcode/DerivedData/Pods-bqwclacbosmgaucznsjdeymrffth/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/diwas/Library/Developer/Xcode/DerivedData/Pods-bqwclacbosmgaucznsjdeymrffth/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : false
+}
