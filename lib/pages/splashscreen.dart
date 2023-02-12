@@ -94,7 +94,7 @@ class _SplashscreenState extends State<Splashscreen> {
                           style: TextStyle(
                           fontSize: 55,
                           color: Colors.amber.shade700,
-                          fontFamily: "customFont",
+                          fontFamily: "kanit",
                           fontWeight: FontWeight.w800
                 ),
               ),
