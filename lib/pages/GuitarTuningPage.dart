@@ -1,5 +1,5 @@
-import 'package:fftea/fftea.dart';
 import 'package:flutter/material.dart';
+import 'package:guitar_tunes/api/soundListener.dart';
 
 class GuitarTuningPage extends StatefulWidget {
   @override
@@ -8,6 +8,7 @@ class GuitarTuningPage extends StatefulWidget {
 
 class _GuitarTuningPageState extends State<GuitarTuningPage> {
   int selected = 0; // zero as none of them selected
+  final _listener = SoundListener();
 
   @override
   void initState() {
@@ -19,13 +20,15 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
     if (selected == stringNumber) {
       setState(() {
         selected = 0;
+        _listener.stopListening();
       });
     } else {
       setState(() {
         selected = stringNumber;
+        _listener.listen();
       });
     }
-    print("Selected String: " + selected.toString());
+    print("Selected String: ${selected.toString()} ");
   }
 
   @override
