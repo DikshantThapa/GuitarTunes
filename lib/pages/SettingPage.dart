@@ -5,8 +5,10 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.green,
-      child: Center(
-        child: Text('Settings'),
+      child: SafeArea(
+        child: Center(
+          child: Text('Settings'),
+        ),
       ),
     );
   }
