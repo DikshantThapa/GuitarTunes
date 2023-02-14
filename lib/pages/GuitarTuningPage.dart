@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:guitar_tunes/api/soundListener.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:flutter_sound/flutter_sound.dart';
+
+import '../api/soundListener.dart';
 
 class GuitarTuningPage extends StatefulWidget {
   @override
@@ -8,6 +11,15 @@ class GuitarTuningPage extends StatefulWidget {
 
 class _GuitarTuningPageState extends State<GuitarTuningPage> {
   int selected = 0; // zero as none of them selected
+  final player = AssetsAudioPlayer();
+  List<String> stringSounds = [
+    "assets/sounds/E4_330.wav",
+    "assets/sounds/B_247.wav",
+    "assets/sounds/G_196.wav",
+    "assets/sounds/D_147.wav",
+    "assets/sounds/A_110.wav",
+    "assets/sounds/E2_82.wav"
+  ];
   final _listener = SoundListener();
 
   @override
@@ -16,16 +28,25 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
     selected = 0;
   }
 
+  void playsound(int stringNumber) {
+    player.open(
+      Audio(stringSounds[stringNumber - 1]),
+      autoStart: true,
+    );
+  }
+
   onSelected(int stringNumber) {
     if (selected == stringNumber) {
       setState(() {
         selected = 0;
         _listener.stopListening();
+        playsound(stringNumber);
       });
     } else {
       setState(() {
         selected = stringNumber;
         _listener.listen();
+        playsound(stringNumber);
       });
     }
     print("Selected String: ${selected.toString()} ");
@@ -161,6 +182,7 @@ class _StringButtonState extends State<StringButton> {
             foregroundColor: Colors.white,
             backgroundColor:
                 widget.isSelected ? Colors.blue.shade400 : Colors.grey.shade700,
+            enableFeedback: false,
             shape: CircleBorder(
                 side: BorderSide(color: Colors.grey.shade800, width: 2))),
         child: Text(widget.stringName[0]),

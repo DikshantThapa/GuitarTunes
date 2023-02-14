@@ -38,6 +38,7 @@ dependencies:
   permission_handler: ^10.2.0
   fftea: ^1.2.0+1
   flutter_sound: ^9.2.13
+  assets_audio_player: ^3.0.6
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +65,7 @@ flutter:
   assets:
     - assets/images/guitar-head.png
     - assets/images/
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
