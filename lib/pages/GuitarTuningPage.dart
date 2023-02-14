@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:flutter_sound/flutter_sound.dart';
 
 import '../api/soundListener.dart';
 
@@ -37,16 +36,16 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
 
   onSelected(int stringNumber) {
     if (selected == stringNumber) {
+      _listener.stopListening();
+      // playsound(stringNumber);
       setState(() {
         selected = 0;
-        _listener.stopListening();
-        playsound(stringNumber);
       });
     } else {
+      _listener.listen();
+      playsound(stringNumber);
       setState(() {
         selected = stringNumber;
-        _listener.listen();
-        playsound(stringNumber);
       });
     }
     print("Selected String: ${selected.toString()} ");
