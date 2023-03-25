@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'Metronome.dart';
 
 class ToolsPage extends StatelessWidget {
   @override
@@ -27,7 +28,10 @@ class ToolsPage extends StatelessWidget {
             SizedBox(height: 10),
             InkWell(
                 onTap: () {
-                  print("Metronome button pressed!");
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Metronome()),
+                    );
                 },
                 child: Container(
                   padding: EdgeInsets.all(10),
