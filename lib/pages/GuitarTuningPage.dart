@@ -12,12 +12,12 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
   int selected = 0; // zero as none of them selected
   final player = AssetsAudioPlayer();
   List<String> stringSounds = [
-    "assets/sounds/E4_330.wav",
-    "assets/sounds/B_247.wav",
-    "assets/sounds/G_196.wav",
-    "assets/sounds/D_147.wav",
-    "assets/sounds/A_110.wav",
-    "assets/sounds/E2_82.wav"
+    "assets/sounds/E4_330_new.wav",
+    "assets/sounds/B_247_new.wav",
+    "assets/sounds/G_196_new.wav",
+    "assets/sounds/D_147_new.wav",
+    "assets/sounds/A_110_new.wav",
+    "assets/sounds/E2_82_new.wav"
   ];
   final _listener = SoundListener();
 

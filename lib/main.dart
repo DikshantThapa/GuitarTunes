@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splashscreen(),
+      home: const Splashscreen(),
       theme: ThemeData.dark(),
       darkTheme: ThemeData.dark(),
     );
@@ -27,3 +27,10 @@ class _HomePageState extends State<HomePage> {
     return ButtomNav();
   }
 }
+
+
+//Testing Github --Dikshant 
+//again
+
+
+//https://www.electronicshub.org/binary-adder-and-subtractor/#Full_Subtractor
