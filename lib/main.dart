@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splashscreen(),
+      home: const Splashscreen(),
       theme: ThemeData.dark(),
       darkTheme: ThemeData.dark(),
     );
