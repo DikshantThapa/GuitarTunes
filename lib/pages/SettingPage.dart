@@ -25,14 +25,14 @@ class SettingsPage extends StatelessWidget {
                 Container(
                   height: 57,
                   padding: EdgeInsets.only(left: 18),
-                  width: 200,
+                  width: 160,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "General",
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                   decoration: BoxDecoration(
-                      // border: Border.all(color: Colors.white)
+                      border: Border.all(color: Colors.red)
                       ),
                 ),
                 SizedBox(
@@ -133,7 +133,7 @@ class SettingsPage extends StatelessWidget {
                 Container(
                   height: 57,
                   padding: EdgeInsets.only(left: 18),
-                  width: 200,
+                  width: double.maxFinite,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Chords",
@@ -186,7 +186,7 @@ class SettingsPage extends StatelessWidget {
                 Container(
                   height: 57,
                   padding: EdgeInsets.only(left: 18),
-                  width: 200,
+                  width: double.maxFinite,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Subscription",
