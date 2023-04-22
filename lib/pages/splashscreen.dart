@@ -64,13 +64,13 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () {
+    /* Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) {
           return HomePage();
         },
       ));
-    });
+    }); */
     return Scaffold(
       body: Container(
         child: Center(
@@ -85,10 +85,10 @@ class _SplashscreenState extends State<Splashscreen> {
                     decoration: BoxDecoration(
                         // border: Border.all(color: Colors.black),
                         image: DecorationImage(
-                            image: AssetImage("assets/images/Guitartunes.png"),
+                            image: AssetImage("assets/images/splash_final.png"),
                             fit: BoxFit.cover)),
                   ),
-                  Container(
+                  /* Container(
                     child: Text(
                       "Guitar Tunes",
                       style: TextStyle(
@@ -97,11 +97,20 @@ class _SplashscreenState extends State<Splashscreen> {
                           fontFamily: "Kanit",
                           fontWeight: FontWeight.w800),
                     ),
+                  ), */
+                  SizedBox(
+                    height: 30,
                   ),
-                  CircularProgressIndicator.adaptive(
+
+                  CircularProgressIndicator(
+                    color: Colors.white,
+                    backgroundColor: Colors.indigo.shade700,
+                    strokeWidth: 3,
+                  )
+                  /* CircularProgressIndicator.adaptive(
                     backgroundColor: Colors.white,
                     strokeWidth: 5,
-                  )
+                  ) */
                 ],
               )
             ],
@@ -109,7 +118,7 @@ class _SplashscreenState extends State<Splashscreen> {
         ),
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
+                image: AssetImage("assets/images/bg_final.png"),
                 fit: BoxFit.cover)),
       ),
     );
