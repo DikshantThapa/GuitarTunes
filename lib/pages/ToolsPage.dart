@@ -28,10 +28,10 @@ class ToolsPage extends StatelessWidget {
             SizedBox(height: 10),
             InkWell(
                 onTap: () {
-                   Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Metronome()),
-                    );
+                  );
                 },
                 child: Container(
                   padding: EdgeInsets.all(10),
