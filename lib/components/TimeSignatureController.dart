@@ -15,7 +15,7 @@ List<List<int>> TIME_SIGNATURES = [
 ];
 
 class TimeSignatureController extends StatefulWidget {
-  List<int> timesignature = [2, 4];
+  List<int> timesignature;
   final ValueChanged<List<int>> onTimeSignatureChanged;
 
   TimeSignatureController(
@@ -33,8 +33,11 @@ class _TimeSignatureControllerState extends State<TimeSignatureController> {
   @override
   build(BuildContext context) {
     return PopupMenuButton(
-      initialValue: 2,
-      child: Text("${widget.timesignature[0]}/${widget.timesignature[0]}"),
+      initialValue: 3,
+      onSelected: (int value) {
+        widget.onTimeSignatureChanged(TIME_SIGNATURES[value]);
+      },
+      child: Text("${widget.timesignature[0]}/${widget.timesignature[1]}"),
       itemBuilder: (BuildContext context) {
         return TIME_SIGNATURES.map((e) {
           return PopupMenuItem(

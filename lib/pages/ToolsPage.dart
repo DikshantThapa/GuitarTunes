@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'Metronome.dart';
+import 'MetronomePage.dart';
 
 class ToolsPage extends StatelessWidget {
   @override
@@ -30,7 +30,7 @@ class ToolsPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Metronome()),
+                    MaterialPageRoute(builder: (context) => MetronomePage()),
                   );
                 },
                 child: Container(

@@ -54,10 +54,15 @@ class _TapButtonState extends State<TapButton> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      IconButton(
-          highlightColor: Colors.greenAccent,
-          onPressed: _onTapButtonPressed,
-          icon: const Icon(Icons.touch_app)),
+      Container(
+          // color: Colors.blue,
+          decoration: BoxDecoration(
+              color: Colors.blue, borderRadius: BorderRadius.circular(40.0)),
+          child: IconButton(
+              highlightColor: Colors.greenAccent,
+              onPressed: _onTapButtonPressed,
+              icon: const Icon(Icons.touch_app))),
+      const SizedBox(height: 10),
       const Text("Tap")
     ]);
   }
