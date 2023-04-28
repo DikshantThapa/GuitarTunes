@@ -64,13 +64,13 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
-    /* Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) {
           return HomePage();
         },
       ));
-    }); */
+    });
     return Scaffold(
       body: Container(
         child: Center(
