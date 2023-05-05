@@ -36,7 +36,7 @@ class _ButtomNavState extends State<ButtomNav> {
         showSelectedLabels: false,
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
           BottomNavigationBarItem(
               icon: Icon(Icons.build_circle), label: "Tools"),
