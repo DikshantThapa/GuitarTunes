@@ -1,9 +1,18 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+  bool toggled = false;
+}
+
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
@@ -25,14 +34,14 @@ class SettingsPage extends StatelessWidget {
                 Container(
                   height: 57,
                   padding: EdgeInsets.only(left: 18),
-                  width: 200,
+                  width: 160,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "General",
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                   decoration: BoxDecoration(
-                      // border: Border.all(color: Colors.white)
+                      //border: Border.all(color: Colors.red)
                       ),
                 ),
                 SizedBox(
@@ -48,8 +57,16 @@ class SettingsPage extends StatelessWidget {
               height: 60,
               alignment: Alignment.center,
               width: 600,
+              child: Text(
+                "Language",
+                style: TextStyle(
+                  color: Colors.white60,
+                  fontSize: 25
+                ),
+
+              ),
               decoration: BoxDecoration(
-                  //ßborder: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -61,7 +78,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -73,7 +90,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -85,7 +102,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
             Container(
@@ -96,19 +113,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-
-            Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
-              height: 60,
-              alignment: Alignment.center,
-              width: 600,
-              decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -120,7 +125,19 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß   border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(30)),
+            ),
+
+            Container(
+              margin: EdgeInsets.only(top: 5, bottom: 5),
+              padding:
+                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
+              height: 60,
+              alignment: Alignment.center,
+              width: 600,
+              decoration: BoxDecoration(
+                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -131,16 +148,17 @@ class SettingsPage extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: 57,
+                   height: 57,
                   padding: EdgeInsets.only(left: 18),
-                  width: 200,
+                  width: 160,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "Chords",
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                   decoration: BoxDecoration(
-                      //  border: Border.all(color: Colors.white)
+                      /* border: 
+                      Border.all(color: Colors.white) */
                       ),
                 ),
                 SizedBox(
@@ -160,7 +178,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -172,7 +190,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -184,7 +202,7 @@ class SettingsPage extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: 57,
+                    height: 57,
                   padding: EdgeInsets.only(left: 18),
                   width: 200,
                   alignment: Alignment.centerLeft,
@@ -195,7 +213,7 @@ class SettingsPage extends StatelessWidget {
                         fontSize: 30),
                   ),
                   decoration: BoxDecoration(
-                      //  border: Border.all(color: Colors.white)
+                     //border: Border.all(color: Colors.white)
                       ),
                 ),
                 SizedBox(
@@ -215,7 +233,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -227,7 +245,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -239,7 +257,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -251,7 +269,7 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -263,9 +281,15 @@ class SettingsPage extends StatelessWidget {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                  //ß  border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
+            
+          /*   SwitchListTile(value: toggled,
+             onChanged: (bool value){
+              setState(()=>toggled = value);
+             },title: Text("Recieve Notification",style: TextStyle(fontSize: 25),),activeColor: Colors.green.shade400
+            ,) */
           ],
         ),
       ),
