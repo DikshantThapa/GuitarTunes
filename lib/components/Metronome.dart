@@ -47,7 +47,7 @@ class Metronome {
   }
 
   void stop() {
-    _timer?.cancel();
+    _timer.cancel();
     _beatCount = 0;
     assetsAudioPlayer.stop();
   }

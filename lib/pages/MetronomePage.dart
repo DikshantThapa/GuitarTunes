@@ -100,9 +100,10 @@ class _MetronomePageState extends State<MetronomePage> {
               const SizedBox(height: 8),
               BPMCircularSlider(
                 bpm: _bpm,
-                onBpmChange: (ValueChangingArgs args) {
+                onBpmChange: (double v) => _onBpmChange(v),
+                onBpmChanging: (ValueChangingArgs args) {
                   setState(() {
-                    _bpm = args.value.round();
+                    _bpm = args.value.toInt();
                   });
                 },
                 onStart: () {
