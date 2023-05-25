@@ -203,7 +203,10 @@ class _EarTrainingPageState extends State<EarTrainingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Ankit")),
+        appBar: AppBar(
+          title: Text("Ear Trainer > Game"),
+          backgroundColor: Colors.transparent,
+        ),
         body: (chordPlayedcounter <= chordlist[listno].length)
             ? playingWidget()
             : askingWidget(playchord));

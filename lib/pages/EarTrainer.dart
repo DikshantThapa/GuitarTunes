@@ -14,9 +14,17 @@ class _EarTrainerState extends State<EarTrainer> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 56,
-        title: Text(""),
+        title: const Text(
+          "Ear Trainer",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).maybePop();
           },
@@ -53,6 +61,7 @@ class _EarTrainerState extends State<EarTrainer> {
                     flex: 4,
                     child: Container(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             "A,",
@@ -104,17 +113,18 @@ class _EarTrainerState extends State<EarTrainer> {
                     flex: 4,
                     child: Container(
                       child: Row(
-                        children: [
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
                           Text(
-                            "A,",
+                            "E,",
                             style: TextStyle(fontSize: 50),
                           ),
                           Text(
-                            "C,",
+                            "F,",
                             style: TextStyle(fontSize: 50),
                           ),
                           Text(
-                            "D,",
+                            "G,",
                             style: TextStyle(fontSize: 50),
                           ),
                         ],

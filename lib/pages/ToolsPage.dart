@@ -19,14 +19,14 @@ class ToolsPage extends StatelessWidget {
               ))),
       body: Column(children: [
         Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(children: [
-            Text(
+            const Text(
               "Metronome",
               textAlign: TextAlign.left,
               style: TextStyle(fontSize: 22),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             InkWell(
                 onTap: () {
                   Navigator.push(
@@ -35,11 +35,11 @@ class ToolsPage extends StatelessWidget {
                   );
                 },
                 child: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   height: 150.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage(
                               "assets/images/guitar_background-1.jpg"),
                           colorFilter:
