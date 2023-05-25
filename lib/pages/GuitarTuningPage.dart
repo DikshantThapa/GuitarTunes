@@ -3,12 +3,14 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter_audio_capture/flutter_audio_capture.dart';
+import 'package:guitar_tunes/utils/calculateSmoothedGaugeValue.dart';
+import 'package:guitar_tunes/utils/getTuningStatus.dart';
 import 'package:pitch_detector_dart/pitch_detector.dart';
 import 'package:pitchupdart/instrument_type.dart';
 import 'package:pitchupdart/pitch_handler.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-final STANDARD_PITCH = [329, 246, 196, 146, 110, 82];
+final STANDARD_PITCH = [330, 247, 196, 147, 110, 82];
 
 class GuitarTuningPage extends StatefulWidget {
   @override
@@ -19,6 +21,9 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
   final _audioRecorder = FlutterAudioCapture();
   final pitchDetectorDart = PitchDetector(44100, 2000);
   final pitchupDart = PitchHandler(InstrumentType.guitar);
+
+  double previousSmoothedValue = 0.0;
+  double smoothingFactor = 0.2;
 
   var status = "Click on start";
   double pitch = 0;
@@ -67,21 +72,17 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
     //Uses pitch_detector_dart library to detect a pitch from the audio sample
     final result = pitchDetectorDart.getPitch(audioSample);
     //If there is a pitch - evaluate it
+
     if (result.pitched) {
+      debugPrint("Pitch:  ${result.pitch}");
       final expectedPitch = STANDARD_PITCH[selected - 1];
-      final pitchDiff = result.pitch - expectedPitch;
-      String tuningStatus = "Click to start.";
-      if (pitchDiff > -2.5 && pitchDiff < 2.5) {
-        tuningStatus = "Tuned.";
-      } else if (pitchDiff > 2.5) {
-        tuningStatus = "High";
-      } else {
-        tuningStatus = "Low";
-      }
+      final smoothPitch = calculateSmoothedGaugeValue(result.pitch,
+          expectedPitch.toDouble(), previousSmoothedValue, smoothingFactor);
 
       setState(() {
-        pitch = pitchDiff;
-        status = tuningStatus;
+        pitch = smoothPitch;
+        previousSmoothedValue = smoothPitch;
+        status = getTuningStatus(smoothPitch);
       });
     }
   }
@@ -135,63 +136,74 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
             child: SfRadialGauge(
               axes: <RadialAxis>[
                 RadialAxis(
-                    ranges: <GaugeRange>[
-                      GaugeRange(
-                        startValue: -10,
-                        endValue: -7.5,
-                        color: Colors.red,
-                      ),
-                      GaugeRange(
-                        startValue: 7.5,
-                        endValue: 10,
-                        color: Colors.red,
-                      ),
-                      GaugeRange(
-                        startValue: -7.5,
-                        endValue: -5,
-                        color: Colors.deepOrange,
-                      ),
-                      GaugeRange(
-                        startValue: 5,
-                        endValue: 7.5,
-                        color: Colors.deepOrange,
-                      ),
-                      GaugeRange(
-                        startValue: -5,
-                        endValue: -2.5,
-                        color: Colors.orange,
-                      ),
-                      GaugeRange(
-                        startValue: 2.5,
-                        endValue: 5,
-                        color: Colors.orange,
-                      ),
-                      GaugeRange(
-                        startValue: -2.5,
-                        endValue: 0,
-                        color: Colors.green,
-                      ),
-                      GaugeRange(
-                        startValue: 0,
-                        endValue: 2.5,
-                        color: Colors.green,
-                      )
-                    ],
-                    annotations: [
-                      GaugeAnnotation(
-                          positionFactor: 0.5,
-                          angle: 90,
-                          widget: Container(
-                            child: Text(
-                              status,
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold),
-                            ),
-                          ))
-                    ],
-                    minimum: -10,
-                    maximum: 10,
-                    pointers: <GaugePointer>[NeedlePointer(value: pitch)])
+                  ranges: <GaugeRange>[
+                    GaugeRange(
+                      startValue: -10,
+                      endValue: -7.5,
+                      color: Colors.red,
+                    ),
+                    GaugeRange(
+                      startValue: 7.5,
+                      endValue: 10,
+                      color: Colors.red,
+                    ),
+                    GaugeRange(
+                      startValue: -7.5,
+                      endValue: -5,
+                      color: Colors.deepOrange,
+                    ),
+                    GaugeRange(
+                      startValue: 5,
+                      endValue: 7.5,
+                      color: Colors.deepOrange,
+                    ),
+                    GaugeRange(
+                      startValue: -5,
+                      endValue: -2.5,
+                      color: Colors.orange,
+                    ),
+                    GaugeRange(
+                      startValue: 2.5,
+                      endValue: 5,
+                      color: Colors.orange,
+                    ),
+                    GaugeRange(
+                      startValue: -2.5,
+                      endValue: 0,
+                      color: Colors.green,
+                    ),
+                    GaugeRange(
+                      startValue: 0,
+                      endValue: 2.5,
+                      color: Colors.green,
+                    )
+                  ],
+                  annotations: [
+                    GaugeAnnotation(
+                        positionFactor: 0.5,
+                        angle: 90,
+                        widget: Container(
+                          child: Text(
+                            status,
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ))
+                  ],
+                  minimum: -10,
+                  maximum: 10,
+                  pointers: <GaugePointer>[
+                    NeedlePointer(
+                        value: pitch,
+                        needleStartWidth: 1,
+                        needleEndWidth: 5,
+                        knobStyle: const KnobStyle(
+                            knobRadius: 0.05,
+                            borderColor: Colors.black,
+                            borderWidth: 0.02,
+                            color: Colors.white))
+                  ],
+                )
               ],
             )),
         Stack(
