@@ -12,13 +12,12 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         elevation: 0,
         centerTitle: false,
         backgroundColor: Colors.transparent,
-        title: Text(
+        title: const Text(
           "Settings",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -33,41 +32,37 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Container(
                   height: 57,
-                  padding: EdgeInsets.only(left: 18),
+                  padding: const EdgeInsets.only(left: 18),
                   width: 160,
                   alignment: Alignment.centerLeft,
-                  child: Text(
+                  decoration: const BoxDecoration(
+                      //border: Border.all(color: Colors.red)
+                      ),
+                  child: const Text(
                     "General",
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
-                  decoration: BoxDecoration(
-                      //border: Border.all(color: Colors.red)
-                      ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 200,
                 )
               ],
             ),
 
             Container(
-              margin: EdgeInsets.only(top: 5, bottom: 5),
-              padding:
-                  EdgeInsetsDirectional.symmetric(vertical: 2, horizontal: 8),
+              margin: const EdgeInsets.only(top: 5, bottom: 5),
+              padding: const EdgeInsetsDirectional.symmetric(
+                  vertical: 2, horizontal: 8),
               height: 60,
               alignment: Alignment.center,
               width: 600,
-              child: Text(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(30)),
+              child: const Text(
                 "Language",
-                style: TextStyle(
-                  color: Colors.white60,
-                  fontSize: 25
-                ),
-
+                style: TextStyle(color: Colors.white60, fontSize: 25),
               ),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(30)),
             ),
 
             Container(
@@ -137,7 +132,7 @@ class _SettingsPageState extends State<SettingsPage> {
               alignment: Alignment.center,
               width: 600,
               decoration: BoxDecoration(
-                   border: Border.all(color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
 
@@ -148,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Row(
               children: [
                 Container(
-                   height: 57,
+                  height: 57,
                   padding: EdgeInsets.only(left: 18),
                   width: 160,
                   alignment: Alignment.centerLeft,
@@ -202,7 +197,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Row(
               children: [
                 Container(
-                    height: 57,
+                  height: 57,
                   padding: EdgeInsets.only(left: 18),
                   width: 200,
                   alignment: Alignment.centerLeft,
@@ -213,7 +208,7 @@ class _SettingsPageState extends State<SettingsPage> {
                         fontSize: 30),
                   ),
                   decoration: BoxDecoration(
-                     //border: Border.all(color: Colors.white)
+                      //border: Border.all(color: Colors.white)
                       ),
                 ),
                 SizedBox(
@@ -284,8 +279,8 @@ class _SettingsPageState extends State<SettingsPage> {
                   border: Border.all(color: Colors.white),
                   borderRadius: BorderRadius.circular(30)),
             ),
-            
-          /*   SwitchListTile(value: toggled,
+
+            /*   SwitchListTile(value: toggled,
              onChanged: (bool value){
               setState(()=>toggled = value);
              },title: Text("Recieve Notification",style: TextStyle(fontSize: 25),),activeColor: Colors.green.shade400
