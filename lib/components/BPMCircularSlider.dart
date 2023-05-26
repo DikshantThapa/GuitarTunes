@@ -3,7 +3,8 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class BPMCircularSlider extends StatefulWidget {
   final int bpm;
-  final ValueChanged<ValueChangingArgs> onBpmChange;
+  final Function(double) onBpmChange;
+  final Function(ValueChangingArgs) onBpmChanging;
   final Function onStart;
   final Function onStop;
 
@@ -11,6 +12,7 @@ class BPMCircularSlider extends StatefulWidget {
     Key? key,
     required this.bpm,
     required this.onBpmChange,
+    required this.onBpmChanging,
     required this.onStart,
     required this.onStop,
   }) : super(key: key);
@@ -64,7 +66,8 @@ class _BPMCircularSliderState extends State<BPMCircularSlider> {
                   value: widget.bpm.toDouble(),
                   enableDragging: true,
                   enableAnimation: true,
-                  onValueChanging: widget.onBpmChange,
+                  onValueChangeEnd: widget.onBpmChange,
+                  onValueChanging: widget.onBpmChanging,
                   animationType: AnimationType.easeOutBack,
                   markerType: MarkerType.circle,
                   color: Colors.grey.shade100,

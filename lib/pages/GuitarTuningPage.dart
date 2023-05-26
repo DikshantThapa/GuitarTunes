@@ -1,7 +1,16 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:flutter_audio_capture/flutter_audio_capture.dart';
+import 'package:guitar_tunes/utils/calculateSmoothedGaugeValue.dart';
+import 'package:guitar_tunes/utils/getTuningStatus.dart';
+import 'package:pitch_detector_dart/pitch_detector.dart';
+import 'package:pitchupdart/instrument_type.dart';
+import 'package:pitchupdart/pitch_handler.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import '../api/soundListener.dart';
+final STANDARD_PITCH = [330, 247, 196, 147, 110, 82];
 
 class GuitarTuningPage extends StatefulWidget {
   @override
@@ -9,6 +18,16 @@ class GuitarTuningPage extends StatefulWidget {
 }
 
 class _GuitarTuningPageState extends State<GuitarTuningPage> {
+  final _audioRecorder = FlutterAudioCapture();
+  final pitchDetectorDart = PitchDetector(44100, 2000);
+  final pitchupDart = PitchHandler(InstrumentType.guitar);
+
+  double previousSmoothedValue = 0.0;
+  double smoothingFactor = 0.2;
+
+  var status = "Click on start";
+  double pitch = 0;
+
   int selected = 0; // zero as none of them selected
   final player = AssetsAudioPlayer();
   List<String> stringSounds = [
@@ -19,12 +38,57 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
     "assets/sounds/A_110_new.wav",
     "assets/sounds/E2_82_new.wav"
   ];
-  final _listener = SoundListener();
 
   @override
   void initState() {
     super.initState();
     selected = 0;
+  }
+
+  Future<void> _startCapture() async {
+    await _audioRecorder.start(listener, onError,
+        sampleRate: 44100, bufferSize: 3000);
+
+    setState(() {
+      pitch = 0;
+      status = "Play something";
+    });
+  }
+
+  Future<void> _stopCapture() async {
+    await _audioRecorder.stop();
+
+    setState(() {
+      pitch = 0;
+      status = "Click on start";
+    });
+  }
+
+  void listener(dynamic obj) {
+    //Gets the audio sample
+    var buffer = Float64List.fromList(obj.cast<double>());
+    List<double> audioSample = buffer.toList();
+
+    //Uses pitch_detector_dart library to detect a pitch from the audio sample
+    final result = pitchDetectorDart.getPitch(audioSample);
+    //If there is a pitch - evaluate it
+
+    if (result.pitched) {
+      debugPrint("Pitch:  ${result.pitch}");
+      final expectedPitch = STANDARD_PITCH[selected - 1];
+      final smoothPitch = calculateSmoothedGaugeValue(result.pitch,
+          expectedPitch.toDouble(), previousSmoothedValue, smoothingFactor);
+
+      setState(() {
+        pitch = smoothPitch;
+        previousSmoothedValue = smoothPitch;
+        status = getTuningStatus(smoothPitch);
+      });
+    }
+  }
+
+  void onError(Object e) {
+    print(e);
   }
 
   void playsound(int stringNumber) {
@@ -36,13 +100,13 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
 
   onSelected(int stringNumber) {
     if (selected == stringNumber) {
-      _listener.stopListening();
       // playsound(stringNumber);
+      _stopCapture();
       setState(() {
         selected = 0;
       });
     } else {
-      _listener.listen();
+      _startCapture();
       playsound(stringNumber);
       setState(() {
         selected = stringNumber;
@@ -66,7 +130,82 @@ class _GuitarTuningPageState extends State<GuitarTuningPage> {
         ),
         centerTitle: true,
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+        Container(
+            height: 250,
+            child: SfRadialGauge(
+              axes: <RadialAxis>[
+                RadialAxis(
+                  ranges: <GaugeRange>[
+                    GaugeRange(
+                      startValue: -10,
+                      endValue: -7.5,
+                      color: Colors.red,
+                    ),
+                    GaugeRange(
+                      startValue: 7.5,
+                      endValue: 10,
+                      color: Colors.red,
+                    ),
+                    GaugeRange(
+                      startValue: -7.5,
+                      endValue: -5,
+                      color: Colors.deepOrange,
+                    ),
+                    GaugeRange(
+                      startValue: 5,
+                      endValue: 7.5,
+                      color: Colors.deepOrange,
+                    ),
+                    GaugeRange(
+                      startValue: -5,
+                      endValue: -2.5,
+                      color: Colors.orange,
+                    ),
+                    GaugeRange(
+                      startValue: 2.5,
+                      endValue: 5,
+                      color: Colors.orange,
+                    ),
+                    GaugeRange(
+                      startValue: -2.5,
+                      endValue: 0,
+                      color: Colors.green,
+                    ),
+                    GaugeRange(
+                      startValue: 0,
+                      endValue: 2.5,
+                      color: Colors.green,
+                    )
+                  ],
+                  annotations: [
+                    GaugeAnnotation(
+                        positionFactor: 0.5,
+                        angle: 90,
+                        widget: Container(
+                          child: Text(
+                            status,
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ))
+                  ],
+                  minimum: -10,
+                  maximum: 10,
+                  pointers: <GaugePointer>[
+                    NeedlePointer(
+                        value: pitch,
+                        needleStartWidth: 1,
+                        needleEndWidth: 5,
+                        knobStyle: const KnobStyle(
+                            knobRadius: 0.05,
+                            borderColor: Colors.black,
+                            borderWidth: 0.02,
+                            color: Colors.white))
+                  ],
+                )
+              ],
+            )),
         Stack(
           children: [
             Positioned(
