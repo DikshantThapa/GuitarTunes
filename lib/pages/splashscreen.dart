@@ -73,6 +73,10 @@ class _SplashscreenState extends State<Splashscreen> {
     });
     return Scaffold(
       body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/bg_final.png"),
+                fit: BoxFit.cover)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -82,7 +86,7 @@ class _SplashscreenState extends State<Splashscreen> {
                   Container(
                     height: 400,
                     width: 400,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         // border: Border.all(color: Colors.black),
                         image: DecorationImage(
                             image: AssetImage("assets/images/splash_final.png"),
@@ -98,10 +102,9 @@ class _SplashscreenState extends State<Splashscreen> {
                           fontWeight: FontWeight.w800),
                     ),
                   ), */
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-
                   CircularProgressIndicator(
                     color: Colors.white,
                     backgroundColor: Colors.indigo.shade700,
@@ -116,10 +119,6 @@ class _SplashscreenState extends State<Splashscreen> {
             ],
           ),
         ),
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/bg_final.png"),
-                fit: BoxFit.cover)),
       ),
     );
   }
