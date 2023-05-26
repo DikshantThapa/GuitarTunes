@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guitar_tunes/pages/EarTrainingpage.dart';
+import 'package:guitar_tunes/pages/EarTrainingPage.dart';
 
 class EarTrainer extends StatefulWidget {
   const EarTrainer({super.key});
